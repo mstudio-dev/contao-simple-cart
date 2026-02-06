@@ -1,0 +1,10 @@
+services:
+    Mstudio\ContaoSimpleCart\Service\CartService:
+        autowire: true
+        autoconfigure: true
+        public: true
+
+    Mstudio\ContaoSimpleCart\Controller\FrontendModule\ShoppingCartController:
+        autowire: true
+        autoconfigure: true
+        public: true

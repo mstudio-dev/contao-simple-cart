@@ -1,11 +1,43 @@
-{% if products %}
-    <ul>
-        {% for product in products %}
-            <li>
-                <strong>{{ product.name }}</strong> - {{ product.price }}
-            </li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>No products available.</p>
-{% endif %}
+<div class="simple-cart">
+    <h2>Warenkorb</h2>
+    {% if cart.items %}
+        <form method="post">
+            <ul>
+                {% for item in cart.items %}
+                    <li>
+                        <input type="number" name="quantity[{{ item.product.id }}]" value="{{ item.quantity }}" min="0" style="width: 50px;">
+                        x {{ item.product.name }}
+                        <span>{{ item.total|format_currency('EUR') }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+            <button type="submit" name="update">Warenkorb aktualisieren</button>
+        </form>
+        <p class="total">
+            <strong>Gesamt:</strong> {{ cart.total|format_currency('EUR') }}
+        </p>
+    {% else %}
+        <p>Der Warenkorb ist leer.</p>
+    {% endif %}
+
+    <hr>
+
+    <h2>Produkte</h2>
+    {% if products %}
+        <div class="product-list">
+            {% for product in products %}
+                <div class="product">
+                    <strong>{{ product.name }}</strong> - {{ product.price|format_currency('EUR') }}
+                    <form method="post">
+                        <input type="hidden" name="productId" value="{{ product.id }}">
+                        <button type="submit" name="add">In den Warenkorb</button>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>Keine Produkte verfügbar.</p>
+    {% endif %}
+</div>
+
+

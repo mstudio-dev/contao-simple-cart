@@ -13,6 +13,7 @@ use Mstudio\ContaoSimpleCart\Model\ProductModel;
 use Mstudio\ContaoSimpleCart\Service\CartService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\RouterInterface;
 
 /**
@@ -61,8 +62,6 @@ class ShoppingCartController extends AbstractFrontendModuleController
 
         return $template->getResponse();
     }
-
-use Symfony\Component\HttpFoundation\RedirectResponse;
 
     private function reloadPage(Request $request): Response
     {

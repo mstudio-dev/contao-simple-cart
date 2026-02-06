@@ -1,6 +1,8 @@
 <?php
 
-namespace MyVendor\ShoppingCart\Model;
+declare(strict_types=1);
+
+namespace Mstudio\ContaoSimpleCart\Model;
 
 use Contao\Model;
 

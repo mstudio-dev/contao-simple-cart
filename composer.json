@@ -1,0 +1,24 @@
+{
+    "name": "mstudio/contao-simple-cart",
+    "type": "contao-bundle",
+    "description": "A simple shopping cart bundle for Contao.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "M-Studio",
+            "homepage": "https://www.m-studio.de"
+        }
+    ],
+    "require": {
+        "php": ">=8.1",
+        "contao/core-bundle": "^5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mstudio\\ContaoSimpleCart\\": "src/"
+        }
+    },
+    "extra": {
+        "contao-manager-plugin": "Mstudio\\ContaoSimpleCart\\ContaoManager\\Plugin"
+    }
+}

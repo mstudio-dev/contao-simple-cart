@@ -16,6 +16,9 @@
         <p class="total">
             <strong>Gesamt:</strong> {{ cart.total|format_currency('EUR') }}
         </p>
+        <div class="checkout-button">
+            <a href="{{ checkout_page_url }}">Zur Kasse</a>
+        </div>
     {% else %}
         <p>Der Warenkorb ist leer.</p>
     {% endif %}

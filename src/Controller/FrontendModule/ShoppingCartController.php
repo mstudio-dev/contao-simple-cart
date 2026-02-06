@@ -10,6 +10,7 @@ use Contao\ModuleModel;
 use Contao\Template;
 use Mstudio\ContaoSimpleCart\Model\ProductModel;
 use Mstudio\ContaoSimpleCart\Service\CartService;
+use Contao\PageModel;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\RouterInterface;
@@ -50,6 +51,10 @@ class ShoppingCartController extends AbstractFrontendModuleController
 
         // Get cart content
         $template->cart = $this->cartService->getCartItems();
+
+        // Find the checkout page URL
+        $checkoutPage = PageModel::findWithDetails($model->jumpTo);
+        $template->checkout_page_url = $checkoutPage ? $checkoutPage->getAbsoluteUrl() : '';
 
         return $template->getResponse();
     }

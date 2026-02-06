@@ -8,3 +8,8 @@ services:
         autowire: true
         autoconfigure: true
         public: true
+
+    Mstudio\ContaoSimpleCart\Controller\FrontendModule\CheckoutController:
+        autowire: true
+        autoconfigure: true
+        public: true

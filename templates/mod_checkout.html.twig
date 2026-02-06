@@ -1,0 +1,32 @@
+{% extends 'block_unsearchable' %}
+
+{% block content %}
+    <div class="checkout">
+        {% if confirmed %}
+            <h1>Vielen Dank für Ihre Bestellung!</h1>
+            <p>Ihr Warenkorb wurde geleert.</p>
+            <p><a href="{{ '{{' }} page.regularPath {{ '}}' }}">Zurück zur Startseite</a></p>
+        {% else %}
+            <h1>Bestellübersicht</h1>
+            {% if cart.items %}
+                <ul>
+                    {% for item in cart.items %}
+                        <li>
+                            {{ item.quantity }}x {{ item.product.name }}
+                            <span>{{ item.total|format_currency('EUR') }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <p class="total">
+                    <strong>Gesamt:</strong> {{ cart.total|format_currency('EUR') }}
+                </p>
+
+                <form method="post">
+                    <button type="submit" name="confirm_purchase">Kauf bestätigen</button>
+                </form>
+            {% else %}
+                <p>Ihr Warenkorb ist leer.</p>
+            {% endif %}
+        {% endif %}
+    </div>
+{% endblock %}

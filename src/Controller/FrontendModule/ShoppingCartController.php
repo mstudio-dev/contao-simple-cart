@@ -7,14 +7,17 @@ namespace Mstudio\ContaoSimpleCart\Controller\FrontendModule;
 use Contao\CoreBundle\Controller\FrontendModule\AbstractFrontendModuleController;
 use Contao\CoreBundle\Routing\ScopeMatcher;
 use Contao\ModuleModel;
+use Contao\PageModel;
 use Contao\Template;
 use Mstudio\ContaoSimpleCart\Model\ProductModel;
 use Mstudio\ContaoSimpleCart\Service\CartService;
-use Contao\PageModel;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\RouterInterface;
 
+/**
+ * @method static findAll()
+ */
 class ShoppingCartController extends AbstractFrontendModuleController
 {
     public const TYPE = 'shopping_cart';
@@ -59,9 +62,11 @@ class ShoppingCartController extends AbstractFrontendModuleController
         return $template->getResponse();
     }
 
+use Symfony\Component\HttpFoundation\RedirectResponse;
+
     private function reloadPage(Request $request): Response
     {
         // Redirect to the same page to prevent form resubmission
-        return $this->redirect($this->router->generate($request->attributes->get('_route'), $request->attributes->get('_route_params')));
+        return new RedirectResponse($this->router->generate($request->attributes->get('_route'), $request->attributes->get('_route_params')));
     }
 }

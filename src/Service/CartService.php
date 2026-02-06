@@ -8,6 +8,9 @@ use Mstudio\ContaoSimpleCart\Model\ProductModel;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
+/**
+ * @method static findByIds(array $productIds)
+ */
 class CartService
 {
     private const SESSION_KEY = 'contao_simple_cart';
